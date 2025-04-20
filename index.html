@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ismail Hossan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #121212;
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 60px 20px;
+      background: #1f1f1f;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #00ffcc;
+    }
+    .typing {
+      font-size: 1.4em;
+      color: #ccc;
+      height: 30px;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .box {
+      background: #1e1e1e;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,255,204,0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px 0;
+      color: #ccc;
+    }
+    input, button {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+    input {
+      width: 70%;
+    }
+    button {
+      background: #00ffcc;
+      color: #000;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    footer {
+      background: #1f1f1f;
+      color: #888;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ismail Hossan</h1>
+    <div class="typing" id="typing"></div>
+  </header>
+
+  <section>
+    <div class="box">
+      <h2>About Me</h2>
+      <p>I am exploring life and learning new things. This website is my space on the internet.</p>
+    </div>
+
+    <div class="box">
+      <h2>Skills</h2>
+      <ul id="skills-list">
+        <li>No skills listed yet</li>
+      </ul>
+      <input type="text" id="new-skill" placeholder="Add a new skill">
+      <button onclick="addSkill()">Add</button>
+    </div>
+
+    <div class="box">
+      <h2>Projects</h2>
+      <ul id="projects-list">
+        <li>No projects to show yet</li>
+      </ul>
+      <input type="text" id="new-project" placeholder="Add a new project">
+      <button onclick="addProject()">Add</button>
+    </div>
+
+    <div class="box">
+      <h2>Contact</h2>
+      <p>No social links available</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Ismail Hossan. All rights reserved.
+  </footer>
+
+  <script>
+    // Typing animation
+    const texts = ["life is a place to strugle", "welcome to my world", "keep moving forward"];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    (function type() {
+      if (count === texts.length) {
+        count = 0;
+      }
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+      document.getElementById('typing').textContent = letter;
+      if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+        setTimeout(type, 1500);
+      } else {
+        setTimeout(type, 100);
+      }
+    })();
+
+    // Add Skill
+    function addSkill() {
+      const skill = document.getElementById("new-skill").value;
+      const list = document.getElementById("skills-list");
+      if (skill.trim() !== "") {
+        if (list.children[0].textContent === "No skills listed yet") list.innerHTML = "";
+        const li = document.createElement("li");
+        li.textContent = skill;
+        list.appendChild(li);
+        document.getElementById("new-skill").value = "";
+      }
+    }
+
+    // Add Project
+    function addProject() {
+      const project = document.getElementById("new-project").value;
+      const list = document.getElementById("projects-list");
+      if (project.trim() !== "") {
+        if (list.children[0].textContent === "No projects to show yet") list.innerHTML = "";
+        const li = document.createElement("li");
+        li.textContent = project;
+        list.appendChild(li);
+        document.getElementById("new-project").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
